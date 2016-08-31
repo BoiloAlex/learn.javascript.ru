@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>"сортировка массивов"</p>
+	<p>нужно написать функцию, которая принимает строку, где слова перечислены через запятую. Функция должна вернуть новую строку, в которой эти слова будут отсортированы в алфавитном порядке</p>
+	<script>
+
+		function compareNumeric(a,b) {
+			if (a > b) return 1;
+			if (a < b) return -1;
+		}
+		function alfabet(str){
+			var arr = str.split(',');
+			return arr.sort(compareNumeric);
+		}
+
+		var str = "нужно,написать,функцию,которая,принимает,строку,где,слова,перечислены,через,запятую.,Функция,должна,вернуть,новую,строку,в,которой,эти,слова,будут,отсортированы,в,алфавитном";
+		console.info(alfabet(str));
+	</script>
+</body>
+</html>
