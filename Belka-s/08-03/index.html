@@ -7,61 +7,67 @@
 <body>
 	<p>"перебирающие методы массивов":</p>
 	<p>нужно написать функцию <strong>(map_transform)</strong>, которая бы перебирала всеми любимую двумерную матрицу произвольного размера NxM, состоящую из рандомных чисел. Функция должна возвращать новую двумерную матрицу, которая бы содержала только числа, которые делятся на 3 без остатка. Поскольку в новой матрице строки могут получиться разного размера (так как врядли все числа будут кратные трём) - нужно возвращать новую матрицу такого же размера NxM, но те числа, которые не кратные 3 - нужно заменить нулями. <br>
-	Далее нужно написать функцию <strong>(sumAllMatrix)</strong>, которая бы посчитала сумму всех значений в матрице. Решить задачу нужно, используя перебирающие методы массива: .map(), .filter(), .forEach(), .reduce(), также желательно все это оформить в виде функции-конструктора</p>
+		Далее нужно написать функцию <strong>(sumAllMatrix)</strong>, которая бы посчитала сумму всех значений в матрице. Решить задачу нужно, используя перебирающие методы массива: .map(), .filter(), .forEach(), .reduce(), также желательно все это оформить в виде функции-конструктора</p>
 
-	<div id="result"></div>
-	<script>
+		<div id="result"></div>
+		<script>
 
-
-		function print(arr, str){
-			console.group(str);
-			arr.forEach(function(item, i, arr) {
-				console.info( i + ": " + item );
-			});
-			console.groupEnd();
-		}
-
-		function map_transform(matrix){
-			var matrixNew = matrix.map(function(line) {
-				var newLine = line.map(function(item) {
-					temp = (item % 3 == 0) ? item : 0;
-					return temp;
-				});
-				return newLine;
-			});
-			return matrixNew;
-		}
-
-		function sumAllMatrix(matrix){
-			var result = 0;
-			matrix.forEach(function(item, i, line) {
-				result += item.reduce(function(sum, current) {
-					return sum + current;
-				});
-			});
-			return result;
-		}
-
-		function matrixArray(rows,columns){
-			var arr = new Array();
-			for(var i=0; i<columns; i++){
-				arr[i] = new Array();
-				for(var j=0; j<rows; j++){
-					arr[i][j] = Math.floor(Math.random() * 20 );
-				}
+			function to_html(str){
+				document.getElementById('result').innerHTML += str + "<br>";
 			}
-			return arr;
-		}
+
+			function print(arr, str){
+				console.group(str);
+				to_html(str);
+				arr.forEach(function(item, i, arr) {
+					to_html( i + ": " + item );
+					console.info( i + ": " + item );
+				});
+				console.groupEnd();
+			}
+
+			function map_transform(matrix){
+				var matrixNew = matrix.map(function(line) {
+					var newLine = line.map(function(item) {
+						temp = (item % 3 == 0) ? item : 0;
+						return temp;
+					});
+					return newLine;
+				});
+				return matrixNew;
+			}
+
+			function sumAllMatrix(matrix){
+				var result = 0;
+				matrix.forEach(function(item, i, line) {
+					result += item.reduce(function(sum, current) {
+						return sum + current;
+					});
+				});
+				return result;
+			}
+
+			function matrixArray(rows,columns){
+				var arr = new Array();
+				for(var i=0; i<columns; i++){
+					arr[i] = new Array();
+					for(var j=0; j<rows; j++){
+						arr[i][j] = Math.floor(Math.random() * 20 );
+					}
+				}
+				return arr;
+			}
 
 
-		var matrix = matrixArray(5,4);
+			var matrix = matrixArray(5,4);
 
-		print(matrix , "matrix");
+			print(matrix , "matrix");
 
-		var myMatrix2 = map_transform(matrix);
-		print(myMatrix2, "map_transform(matrix)");
+			var myMatrix2 = map_transform(matrix);
+			print(myMatrix2, "map_transform(matrix)");
 
-		console.log("sumAllMatrix " + sumAllMatrix(myMatrix2));
-	</script>
-</body>
-</html>
+			to_html("sumAllMatrix " + sumAllMatrix(myMatrix2));
+			console.log("sumAllMatrix " + sumAllMatrix(myMatrix2));
+		</script>
+	</body>
+	</html>
