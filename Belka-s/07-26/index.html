@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>"методы массивов: сортировка" нужно написать функцию для метода sort которая сортирует массив с произвольным количеством чисел, в результате на первом месте должны быть четные числа, на втором - нечетные</p>
+
+	<div id="result"></div>
+	<script>
+
+		function compareNumeric(a, b) {
+			if (a%2 > b%2) return 1;
+			if (a%2 < a%2) return -1;
+		}
+
+		var arr = [];
+		for (i = 0; i< 15 ; i++){
+			arr.push(Math.floor(Math.random() * 20 ));
+		}
+
+		arr.sort(compareNumeric);
+		console.info(arr);
+	</script>
+</body>
+</html>

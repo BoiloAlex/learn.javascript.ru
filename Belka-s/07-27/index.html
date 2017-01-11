@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p> "строки и методы строк" <br> напишите функцию, которая принимает строку с именем файла и возвращает расширение этого файла</p>
+
+	<div id="result"></div>
+	<script>
+
+		function nameExtention(name) {
+			return name.slice(name.indexOf(".")+1, name.length);
+		}
+
+		console.info(nameExtention("index.html"));
+	</script>
+</body>
+</html>
